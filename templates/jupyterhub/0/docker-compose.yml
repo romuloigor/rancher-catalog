@@ -2,7 +2,7 @@ version: '2'
 volumes:
   jupyter-home:
     external: true
-    driver: rancher-ebs
+    driver: rancher-nfs
 services:
   web:
     ports:
