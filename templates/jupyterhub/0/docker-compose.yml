@@ -1,0 +1,24 @@
+version: '2'
+volumes:
+  jupyter-home:
+    external: true
+    driver: rancher-ebs
+services:
+  web:
+    ports:
+    - ${public_port}:8000/tcp
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label_soft: type=jupyterhub
+    tty: true
+    command:
+    - jupyterhub
+    - --no-ssl
+    - -f
+    - /srv/jupyterhub_config.py
+    image: jupyterhub/jupyterhub:latest
+    volumes:
+      - jupyter-home:/srv
+
+    stdin_open: true

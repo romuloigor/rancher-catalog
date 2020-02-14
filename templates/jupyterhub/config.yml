@@ -1,0 +1,7 @@
+---
+
+name: JupyterHub
+description: |
+  JupyterHub: multi-user Jupyter notebook server
+version: 1.2
+category: Applications
